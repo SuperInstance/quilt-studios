@@ -90,16 +90,24 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api || !setApi) return
-    setApi(api)
+    // rAF-deferred publish (react-hooks/set-state-in-effect): the api is
+    // lifted to the parent one frame after mount instead of synchronously
+    // inside the effect — no cascading render, same observable contract.
+    const raf = requestAnimationFrame(() => setApi(api))
+    return () => cancelAnimationFrame(raf)
   }, [api, setApi])
 
   React.useEffect(() => {
     if (!api) return
-    onSelect(api)
+    // rAF-deferred initial select (react-hooks/set-state-in-effect): the
+    // subscription wiring stays synchronous; only the initial state
+    // computation moves one frame later — no cascading render.
+    const raf = requestAnimationFrame(() => onSelect(api))
     api.on("reInit", onSelect)
     api.on("select", onSelect)
 
     return () => {
+      cancelAnimationFrame(raf)
       api?.off("select", onSelect)
     }
   }, [api, onSelect])
