@@ -6,8 +6,9 @@ import MelonSandbox from '@/components/studios/MelonSandbox';
 import QuiltComposer from '@/components/studios/QuiltComposer';
 import PongXRay from '@/components/studios/PongXRay';
 import DesignNotes from '@/components/studios/DesignNotes';
+import TheDungeon from '@/components/studios/TheDungeon';
 
-type RungId = 'pong' | 'garden' | 'melon' | 'composer';
+type RungId = 'pong' | 'garden' | 'melon' | 'composer' | 'dungeon';
 
 const RUNGS: { id: RungId; n: string; name: string; who: string; blurb: string }[] = [
   {
@@ -25,6 +26,10 @@ const RUNGS: { id: RungId; n: string; name: string; who: string; blurb: string }
   {
     id: 'composer', n: 'III', name: 'Quilt Composer', who: 'student studio',
     blurb: 'Track lanes are cells, the patch bay wires hops, patterns save as drops. A composition is a computation you can hear.',
+  },
+  {
+    id: 'dungeon', n: 'V', name: 'The Dungeon', who: 'all ages · ttrpg',
+    blurb: 'The party IS a quilt: characters are cells, bonds are hooks, the GM is the decomposer who only speaks when the party is stuck. Platonic dice, citable seeds, rewindable camps — and an optional LIVE GM that takes one real model call per wake.',
   },
 ];
 
@@ -108,6 +113,7 @@ export default function Page() {
           {rung === 'garden' && <SeedGarden key="garden" />}
           {rung === 'melon' && <MelonSandbox key="melon" />}
           {rung === 'composer' && <QuiltComposer key="composer" />}
+          {rung === 'dungeon' && <TheDungeon key="dungeon" />}
         </section>
 
         {/* design notes — the brainstorm */}

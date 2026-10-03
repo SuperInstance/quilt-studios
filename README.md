@@ -15,6 +15,7 @@ of the thing you were just playing with.
 | I | **Seed Garden** | littlest hands (~4–8), sandbox | The four atoms — **cell, hook, hop, drop** — are living things you plant and poke. "Numbers LIVE in things, and friendships make numbers move." Nothing can fail. |
 | II | **Melon-Sandbox** | curious kids (~8–12), puzzles | A random world, a random three-hop brain, a melon. "The creature isn't dumb — its *wiring* is." Rewire, rewind, replay; break it on purpose. |
 | III | **Quilt Composer** | students (~12+), GarageBand tier | Track lanes are cells, the patch bay wires hops (echo / double / invert), patterns save as **drops**. "A composition is a computation you can hear." |
+| V | **The Dungeon** | all ages, ttrpg | The party IS a quilt: characters are cells, bonds are hooks, the GM is the decomposer who only speaks when stuck. Platonic dice with citable seeds; camps as rewindable stable points; an optional **LIVE GM** that takes one real server-side model call per wake and receipts it in the scene log. |
 | IV | **Pong X-Ray** | professionals, simulation | A real game at 60fps; below the fold the same run as live cells. **The call economy**: consults cost, every consult teaches the table, calls decelerate as confidence climbs, and repeated misses wake **THE DECOMPOSER** — the slow big agent — which adjusts the wiring and sleeps. |
 
 ## The one-engine claim
@@ -54,7 +55,7 @@ bun run dev     # http://localhost:3000
 bun run lint
 ```
 
-No API keys needed — every rung runs fully client-side. The engine is
+Every rung runs fully client-side with no keys. Optional: the Dungeon's LIVE GM toggle uses `POST /api/dungeon-gm` — a server-side route that reads keys from the environment (never shipped to the browser), makes ONE small model call per wake (deepseek primary, groq secondary, 9s timeout), and falls back gracefully to the local decomposer. The engine is
 framework-agnostic TypeScript; lift `src/lib/quilt/engine.ts` into anything.
 
 ## Seeds, not specs
