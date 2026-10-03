@@ -7,8 +7,9 @@ import QuiltComposer from '@/components/studios/QuiltComposer';
 import PongXRay from '@/components/studios/PongXRay';
 import DesignNotes from '@/components/studios/DesignNotes';
 import TheDungeon from '@/components/studios/TheDungeon';
+import NightEngine from '@/components/studios/NightEngine';
 
-type RungId = 'pong' | 'garden' | 'melon' | 'composer' | 'dungeon';
+type RungId = 'pong' | 'garden' | 'melon' | 'composer' | 'dungeon' | 'night';
 
 const RUNGS: { id: RungId; n: string; name: string; who: string; blurb: string }[] = [
   {
@@ -30,6 +31,10 @@ const RUNGS: { id: RungId; n: string; name: string; who: string; blurb: string }
   {
     id: 'dungeon', n: 'V', name: 'The Dungeon', who: 'all ages · ttrpg',
     blurb: 'The party IS a quilt: characters are cells, bonds are hooks, the GM is the decomposer who only speaks when the party is stuck. Platonic dice, citable seeds, rewindable camps — and an optional LIVE GM that takes one real model call per wake.',
+  },
+  {
+    id: 'night', n: 'VI', name: 'The Night Engine', who: 'erised · ai-writings live',
+    blurb: 'The game-master loop as a thinking tool: craft the world card, six canon characters arrive wearing different live models, wants deadlock and the platonic die moves the story, rewind appends (scars survive), refine the starting state and run again — then splice runs and repairs into one night. Every landing is a receipt on a sha256 chain.',
   },
 ];
 
@@ -114,6 +119,7 @@ export default function Page() {
           {rung === 'melon' && <MelonSandbox key="melon" />}
           {rung === 'composer' && <QuiltComposer key="composer" />}
           {rung === 'dungeon' && <TheDungeon key="dungeon" />}
+          {rung === 'night' && <NightEngine key="night" />}
         </section>
 
         {/* design notes — the brainstorm */}
